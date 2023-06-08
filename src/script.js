@@ -74,13 +74,13 @@ d3.json("../mn.geojson").then(function (data) {
         .enter()
         .append("image")
         .attr("class", "marker")
-        .attr("width", 30)
-        .attr("height", 30)
-        .attr("xlink:href", "../static/images/ar.svg")
+        .attr("width", 60)
+        .attr("height", 60)
+        .attr("xlink:href", "../static/images/ar.gif")
         .style("cursor", "pointer")
         .attr("transform", (d) => {
             let p = projection([d.long, d.lat]);
-            return `translate(${p[0] - 12}, ${p[1] - 30})`;
+            return `translate(${p[0] - 25}, ${p[1] - 40})`;
         });
 
     svg.selectAll("myPath")
