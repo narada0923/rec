@@ -44,7 +44,7 @@ const projection = d3
 
 var path = d3.geoPath().projection(projection);
 
-d3.json("mn.geojson").then(function (data) {
+d3.json("https://narada0923.github.io/rec/mn.geojson").then(function (data) {
     svg.append("g")
         .selectAll("path")
         .data(data.features)
