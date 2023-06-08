@@ -44,7 +44,7 @@ const projection = d3
 
 var path = d3.geoPath().projection(projection);
 
-d3.json("https://narada0923.github.io/rec/mn.geojson").then(function (data) {
+d3.json("mn.geojson").then(function (data) {
     svg.append("g")
         .selectAll("path")
         .data(data.features)
@@ -62,7 +62,7 @@ d3.json("https://narada0923.github.io/rec/mn.geojson").then(function (data) {
         .attr("class", "marker")
         .attr("width", 40)
         .attr("height", 40)
-        .attr("xlink:href", "https://narada0923.github.io/rec/static/images/wind.gif")
+        .attr("xlink:href", "static/images/wind.gif")
         .style("cursor", "pointer")
         .attr("transform", (d) => {
             let p = projection([d.long, d.lat]);
@@ -76,7 +76,7 @@ d3.json("https://narada0923.github.io/rec/mn.geojson").then(function (data) {
         .attr("class", "marker")
         .attr("width", 60)
         .attr("height", 60)
-        .attr("xlink:href", "https://narada0923.github.io/rec/static/images/ar.gif")
+        .attr("xlink:href", "static/images/ar.gif")
         .style("cursor", "pointer")
         .attr("transform", (d) => {
             let p = projection([d.long, d.lat]);
