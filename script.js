@@ -6,6 +6,7 @@ const mark = [
     {
         long: 106.9057,
         lat: 47.8864,
+        title: "Ulaanbaatar",
     },
 ];
 
@@ -13,18 +14,22 @@ const marks = [
     {
         long: 102.779,
         lat: 46.2729,
+        title: "Arvayheer",
     },
     {
         long: 100.1772,
         lat: 49.6429,
+        title: "Moron",
     },
     {
         long: 114.5356,
         lat: 48.0951,
+        title: "Choibalsan",
     },
     {
         long: 95.539,
         lat: 45.108,
+        title: "Bayanbogd",
     },
 ];
 
@@ -35,8 +40,6 @@ marks.forEach(function (row) {
     topush = { type: "LineString", coordinates: [source, target] };
     link.push(topush);
 });
-
-console.log("lines", link);
 
 const projection = d3
     .geoMercator()
@@ -114,7 +117,7 @@ d3.json("mn.geojson").then(function (data) {
                     <image alt='' src='static/images/ar.svg' class='w-8' />
                 </div>
                 <div class='flex flex-col gap-2'>
-                    <p class='text-[14px] font-[600] leading-[16px]'>Mon naran</p>
+                    <p class='text-[14px] font-[600] leading-[16px]'>${d.srcElement.__data__.title}</p>
                     <p class='text-[12px] font-[500] leading-[16px]'>Capacity: 15 MWh</p>
                     <p class='text-[12px] font-[500] leading-[16px]'>Daily yield: 5MWh</p>
                 </div>
@@ -151,7 +154,7 @@ d3.json("mn.geojson").then(function (data) {
                     <image alt='' src='static/images/ar.svg' class='w-8' />
                 </div>
                 <div class='flex flex-col gap-2'>
-                    <p class='text-[14px] font-[600] leading-[16px]'>Mon naran</p>
+                    <p class='text-[14px] font-[600] leading-[16px]'>${d.srcElement.__data__.title}</p>
                     <p class='text-[12px] font-[500] leading-[16px]'>Capacity: 15 MWh</p>
                     <p class='text-[12px] font-[500] leading-[16px]'>Daily yield: 5MWh</p>
                 </div>
@@ -167,9 +170,11 @@ d3.json("mn.geojson").then(function (data) {
             return path(d);
         })
         .style("fill", "none")
-        .style("stroke", "#69b3a2")
+        .style("stroke", `#69b3a2`)
         .style("stroke-width", 2)
         .each(function () {
             animatePath(d3.select(this));
         });
 });
+
+// "#69b3a2"
