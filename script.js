@@ -30,11 +30,13 @@ const marks = [
 
 var link = [];
 marks.forEach(function (row) {
-    source = [mark.long, mark.lat];
+    source = [106.9057, 47.8864];
     target = [row.long, row.lat];
     topush = { type: "LineString", coordinates: [source, target] };
     link.push(topush);
 });
+
+console.log("lines", link);
 
 const projection = d3
     .geoMercator()
@@ -43,6 +45,22 @@ const projection = d3
     .translate([width / 2, height / 2]);
 
 var path = d3.geoPath().projection(projection);
+
+function animatePath(path) {
+    path.attr("stroke-dasharray", function () {
+        return this.getTotalLength() + " " + this.getTotalLength();
+    })
+        .attr("stroke-dashoffset", function () {
+            return this.getTotalLength();
+        })
+        .transition()
+        .duration(3000)
+        .ease(d3.easeLinear)
+        .attr("stroke-dashoffset", 0)
+        .on("end", function () {
+            animatePath(d3.select(this));
+        });
+}
 
 d3.json("mn.geojson").then(function (data) {
     svg.append("g")
@@ -87,10 +105,14 @@ d3.json("mn.geojson").then(function (data) {
         .data(link)
         .enter()
         .append("path")
+        .attr("class", "line")
         .attr("d", function (d) {
             return path(d);
         })
         .style("fill", "none")
         .style("stroke", "#69b3a2")
-        .style("stroke-width", 2);
+        .style("stroke-width", 2)
+        .each(function () {
+            animatePath(d3.select(this));
+        });
 });

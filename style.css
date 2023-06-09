@@ -27,3 +27,11 @@
 .province:hover {
     fill: #4dc476;
 }
+
+.animated-line {
+    fill: none;
+    stroke: #69b3a2;
+    stroke-width: 2;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+}
