@@ -35,3 +35,10 @@
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
 }
+
+.popover {
+    position: relative;
+    z-index: 1000;
+    background-color: #F6F6F6;
+    border-radius: 12px;
+}
