@@ -9,13 +9,27 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="style.css" />
         <script src="https://unpkg.com/topojson@3"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/devtools-detector/2.0.14/devtools-detector.js"
+            integrity="sha512-ZiYgUI2NVB760mprMoZ2WTZ/KslDohbAm6QsGBmqpWDsVkJ2V7gEIAaQHj3/EutqpQWeryBiGHjg3JyWQ4EewQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
     </head>
     <body>
         <div class="w-full h-screen flex items-center justify-center bg-[#1F2A44]">
             <svg id="my_dataviz" width="700" height="400"></svg>
         </div>
-        <script src="script.js"></script>
+        <script src="index.js"></script>
         <script>
+            devtoolsDetector.addListener(function (isOpen) {
+                // alert(isOpen ? "please don't use devtools! it could be tracking you!" : "devtools status: close");
+                if (isOpen) {
+                    window.location.reload();
+                }
+            });
+            devtoolsDetector.launch();
+
             document.addEventListener("contextmenu", (e) => e.preventDefault());
 
             function ctrlShiftKey(e, keyCode) {
