@@ -20,10 +20,8 @@
         <div class="w-full h-screen flex items-center justify-center bg-[#1F2A44]">
             <svg id="my_dataviz" width="700" height="400"></svg>
         </div>
-        <script src="index.js"></script>
         <script>
             devtoolsDetector.addListener(function (isOpen) {
-                // alert(isOpen ? "please don't use devtools! it could be tracking you!" : "devtools status: close");
                 if (isOpen) {
                     window.location.reload();
                 }
@@ -47,5 +45,6 @@
                     return false;
             };
         </script>
+        <script src="index.js"></script>
     </body>
 </html>
